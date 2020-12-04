@@ -7,6 +7,8 @@ import models.Medication;
 import models.Person;
 import models.Pharmacist;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
@@ -59,13 +61,7 @@ public class Main {
 					System.out.println("Medicament a ete bien supprimé");
 					break;
 				case 4:
-//					System.out.println(medications);
-					
-					Collections.sort(medications);
-					
-					for(Medication med: medications){
-			            System.out.println(med.getName());
-			        }
+					System.out.println(medications);
 					break;
 				case 5:
 					System.out.println("Search your medicament");
@@ -138,6 +134,7 @@ public class Main {
 					System.out.println("Client deleted");
 					break;
 				case 4:
+					Collections.sort(clients, NameComparator );
 					System.out.println(clients);
 					
 
@@ -277,5 +274,18 @@ public class Main {
 		return liSele.nextInt();
 
 	}
+	
+	public static Comparator<Person> NameComparator = new Comparator<Person>() {
 
+        public int compare(Person c1, Person c2) {
+           String clientName = c1.getFirstname();
+           String clientLName = c2.getLastName();
+
+           //ascending order
+           return clientName.compareTo(clientLName);
+
+        }
+
+	
+	};
 }
