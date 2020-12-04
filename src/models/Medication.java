@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
-public class Medication {
+public class Medication implements Comparable<Medication>{
 
 	private int id;
 	private String name;
@@ -49,6 +49,7 @@ public class Medication {
 		return "Medication [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
 	}
 	
+	
 	public String AddMedication(ArrayList<Medication> medications, Medication medication) {
 		
 		try {
@@ -94,6 +95,12 @@ public class Medication {
 		}
 			
 		}
+	@Override
+	public int compareTo(Medication med) {
+		
+		String medS=med.getName();
+		return 1;
+			}
 
 	
 	

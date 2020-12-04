@@ -6,7 +6,7 @@ import models.Client;
 import models.Medication;
 import models.Person;
 import models.Pharmacist;
-
+import java.util.Collections;
 public class Main {
 
 	public static void main(String[] args) {
@@ -59,7 +59,13 @@ public class Main {
 					System.out.println("Medicament a ete bien supprimé");
 					break;
 				case 4:
-					System.out.println(medications);
+//					System.out.println(medications);
+					
+					Collections.sort(medications);
+					
+					for(Medication med: medications){
+			            System.out.println(med.getName());
+			        }
 					break;
 				case 5:
 					System.out.println("Search your medicament");
@@ -75,7 +81,7 @@ public class Main {
 
 					break;
 				default:
-					System.out.println("Vous avez une erreur!!!!!!!!!!!!!");
+					System.out.println("Vous avez une erreur !!!!");
 
 				}
 				;
@@ -100,6 +106,7 @@ public class Main {
 					System.out.println("Badge :");
 					int badge = input.nextInt();
 					Client client = new Client( id, firstname,  lastName,  telephone,  email,  badge);
+					client.addPerson(clients, client);
 					System.out.println("Bien ajouté!");
 					break;
 				case 2:
@@ -119,6 +126,7 @@ public class Main {
 					
 					if(badge>=3) {
 						System.out.println("ce client est fidéle");
+						
 					}
 					System.out.println("bien modifier!");
 					break;
