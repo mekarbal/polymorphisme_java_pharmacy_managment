@@ -24,11 +24,16 @@ public class Client extends Person {
 		this.badge = badge;
 	}
 
+
+	
+	
 	@Override
 	public String toString() {
-		return "Client [badge=" + badge + "]";
+		return "Client [badge=" + badge + ", Id=" + getId() + ", Firstname=" + getFirstname()
+				+ ", LastName=" + getLastName() + ", Telephone=" + getTelephone() + ", Email="
+				+ getEmail()+ "]";
 	}
-	
+
 	public String addPerson(ArrayList<Person> listPerson, Client client) {
 		try {
 			return super.addPerson(listPerson, client);
@@ -37,6 +42,8 @@ public class Client extends Person {
 		}
 	}
 	
+	
+
 	public String editPerson(ArrayList<Person> listPerson, Client client, int index) {
 		try {
 			return super.editPerson(listPerson, client, index);
