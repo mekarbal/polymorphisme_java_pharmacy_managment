@@ -42,7 +42,13 @@ public class Medication {
 		
 	}
 	
+	
 
+	@Override
+	public String toString() {
+		return "Medication [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+	}
+	
 	public String AddMedication(ArrayList<Medication> medications, Medication medication) {
 		
 		try {

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Client extends Person {
 
-	private String badge;
+	private int badge;
 
-	public Client(int id, String firstname, String lastName, String telephone, String email, String badge) {
+	public Client(int id, String firstname, String lastName, String telephone, String email, int badge) {
 		super(id, firstname, lastName, telephone, email);
 		this.badge = badge;
 	}
@@ -16,11 +16,11 @@ public class Client extends Person {
 
 	
 
-	public String getBadge() {
+	public int getBadge() {
 		return badge;
 	}
 
-	public void setBadge(String badge) {
+	public void setBadge(int badge) {
 		this.badge = badge;
 	}
 

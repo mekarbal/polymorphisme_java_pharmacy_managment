@@ -36,10 +36,10 @@ public class Main {
 					String price = input.next();
 					Medication medication =new Medication( id,  name,  description, price);
 					medication.AddMedication(medications, medication);				
-					System.out.println("l\'etudiant  a ete bien ajouté");
+					System.out.println("Medicament  a ete bien ajouté");
 					break;
 				case 2:
-					System.out.println(" tapez l\'index de medicament");
+					System.out.println(" tapez l\'id de medicament");
 					id = input.nextInt();
 					System.out.println("Name :");
 					name = input.next();
@@ -52,20 +52,25 @@ public class Main {
 					System.out.println("la modification a ete bien fait");
 					break;
 				case 3:
-					System.out.println(" tapez l\'index de medicament :");
+					System.out.println(" tapez l\'id de medicament :");
 					id = input.nextInt();
 					Medication delmedication = new Medication();
 					delmedication.deleteMedication(medications, id-1);
-					System.out.println("l\'etudiant a ete bien supprimé");
+					System.out.println("Medicament a ete bien supprimé");
 					break;
 				case 4:
-					
-					Medication dsMedication = new Medication();
-					String data=dsMedication.afficheMedication(medications);
-					System.out.println(data);
-
+					System.out.println(medications);
 					break;
 				case 5:
+					System.out.println("Search your medicament");
+                    String searchMedication = input.next();
+                  for (int i = 0; i < medications.size(); i++){
+                      if(medications.get(i).getName().contains(searchMedication)){
+                          System.out.println(medications.get(i).toString());
+                      }
+                  }
+                  break;
+				case 6:
 					prMenu();
 
 					break;
@@ -93,9 +98,8 @@ public class Main {
 					System.out.println("email :");
 					String email = input.next();
 					System.out.println("Badge :");
-					String badge = input.next();
+					int badge = input.nextInt();
 					Client client = new Client( id, firstname,  lastName,  telephone,  email,  badge);
-					client.addPerson(clients, client);
 					System.out.println("Bien ajouté!");
 					break;
 				case 2:
@@ -110,9 +114,12 @@ public class Main {
 					System.out.println("email :");
 					email = input.next();
 					System.out.println("Badge :");
-					badge = input.next();
-					Client upClient = new Client(id, firstname,  lastName,  telephone,  email,  badge);
-					upClient.editPerson(clients, upClient, id-1);
+					badge = input.nextInt();
+					
+					
+					if(badge>=3) {
+						System.out.println("ce client est fidéle");
+					}
 					System.out.println("bien modifier!");
 					break;
 				case 3:
@@ -128,6 +135,15 @@ public class Main {
 
 					break;
 				case 5:
+					System.out.println("Search your Client");
+                    String searchClient = input.next();
+                  for (int i = 0; i < clients.size(); i++){
+                      if(clients.get(i).getFirstname().contains(searchClient)){
+                          System.out.println(clients.get(i).toString());
+                      }
+                  }
+                  break;
+				case 6:
 					prMenu();
 
 					break;
@@ -152,12 +168,11 @@ public class Main {
 					System.out.println("Phone :");
 					String telephone = input.next();
 					System.out.println("email :");
-					String email = input.next();
-					System.out.println("Bien ajouté !");
-					
+					String email = input.next();					
 					Pharmacist pharmacist = new Pharmacist(id, firstname,  lastName,  telephone,  email);
 					pharmacist.addPerson(pharmacists, pharmacist);
 					System.out.println("pharmacist added");
+					
 					break;
 				case 2:
 					System.out.println(" Entrer un id  : ");
@@ -172,7 +187,7 @@ public class Main {
 					email = input.next();
 					Pharmacist upPharmacist = new Pharmacist(id, firstname,  lastName,  telephone,  email  );
 					upPharmacist.editPerson(pharmacists, upPharmacist, id-1);
-					System.out.println("bien modifier!");
+					System.out.println("pharmacist updated");
 					break;
 				case 3:
 					System.out.println(" Entrer un id  : ");
@@ -186,6 +201,15 @@ public class Main {
 
 					break;
 				case 5:
+					System.out.println("Search your Pharmacist");
+                    String searchPharmacist = input.next();
+                  for (int i = 0; i < pharmacists.size(); i++){
+                      if(pharmacists.get(i).getFirstname().contains(searchPharmacist)){
+                          System.out.println(pharmacists.get(i).toString());
+                      }
+                  }
+                  break;
+				case 6:
 					prMenu();
 
 					break;
@@ -207,52 +231,6 @@ public class Main {
 		}
 		while (out == 0)
 			;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		Pharmacist ph= new Pharmacist(2,"tesst","test","test","ffff");
-//		
-//		
-//		Client c=new Client(1,"tesst","test","test","ffff","ffff");
-//		
-//		c.addPerson(clients, c);
-//		Medication med;
-//		med=new Medication(1,"med1","med2","120");
-//		med.AddMedication(medications, med);
-//		ph.editPerson(pharmacists, ph, 0);
-//		System.out.println(ph.affichePerson(pharmacists));
-//		ph.deletePerson(pharmacists, 0);
-//		System.out.println(medications);
 		
 	}
 	
@@ -284,7 +262,8 @@ public class Main {
 		System.out.println("2 - Mise à jour");
 		System.out.println("3 - Supprimer");
 		System.out.println("4 - Afficher");
-		System.out.println("5 - Retour");
+		System.out.println("5 - Search");
+		System.out.println("6 - Retour");
 
 		//listSelec = liSele.nextInt();
 		return liSele.nextInt();
