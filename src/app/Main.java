@@ -23,7 +23,7 @@ public class Main {
 
 		switch (prMenu()) {
 		case 1:
-			do {
+			while (back == 0); {
 				switch (crudMenu()) {
 
 				case 1:
@@ -36,7 +36,7 @@ public class Main {
 					String price = input.next();
 					Medication medication =new Medication( id,  name,  description, price);
 					medication.AddMedication(medications, medication);				
-					System.out.println("l\'etudiant  a ete bien ajouté");
+					System.out.println("le médicament  a été bien ajouté");
 					break;
 				case 2:
 					System.out.println(" tapez l\'index de medicament");
@@ -56,7 +56,7 @@ public class Main {
 					id = input.nextInt();
 					Medication delmedication = new Medication();
 					delmedication.deleteMedication(medications, id-1);
-					System.out.println("l\'etudiant a ete bien supprimé");
+					System.out.println("le médicament a été bien supprimé");
 					break;
 				case 4:
 					
@@ -73,13 +73,13 @@ public class Main {
 					System.out.println("Vous avez une erreur!!!!!!!!!!!!!");
 
 				}
-				;
-			} while (back == 0);
+				
+			} 
 
 			break;
 
 		case 2:
-			do {
+			 while (back == 0){
 				switch (crudMenu()) {
 
 				case 1:
@@ -93,7 +93,7 @@ public class Main {
 					System.out.println("email :");
 					String email = input.next();
 					System.out.println("Badge :");
-					String badge = input.next();
+					int badge = input.nextInt();
 					Client client = new Client( id, firstname,  lastName,  telephone,  email,  badge);
 					client.addPerson(clients, client);
 					System.out.println("Bien ajouté!");
@@ -110,7 +110,7 @@ public class Main {
 					System.out.println("email :");
 					email = input.next();
 					System.out.println("Badge :");
-					badge = input.next();
+					badge = input.nextInt();
 					Client upClient = new Client(id, firstname,  lastName,  telephone,  email,  badge);
 					upClient.editPerson(clients, upClient, id-1);
 					System.out.println("bien modifier!");
@@ -123,7 +123,11 @@ public class Main {
 					System.out.println("Client deleted");
 					break;
 				case 4:
-					System.out.println(clients);
+					
+					Client clientToSHow = new Client();
+					
+					System.out.println(clientToSHow.affichePerson(clients));
+					
 					
 
 					break;
@@ -136,11 +140,11 @@ public class Main {
 
 				}
 				;
-			} while (back == 0);
+			};
 			break;
 
 		case 3:
-			do {
+			 while (back == 0){
 				switch (crudMenu()) {
 
 				case 1:
@@ -194,8 +198,10 @@ public class Main {
 
 				}
 				;
-			} while (back == 0);
+			};
 			break;
+
+			
 		case 4:
 			System.exit(out);
 
@@ -205,8 +211,8 @@ public class Main {
 			System.out.println(" Vous avez une erreur");
 
 		}
-		while (out == 0)
-			;
+		while (out == 0);
+			
 		
 		
 		
@@ -266,7 +272,8 @@ public class Main {
 		System.out.println("1 - La gestion des Medicaments");
 		System.out.println("2 - La gestion des Client");
 		System.out.println("3 - La gestion des Pharmaciens");
-		System.out.println("4 - Quitter");
+		System.out.println("4 - Effectuer un achat");
+		System.out.println("5 - Quitter");
 
 		//listSelec = liSele.nextInt();
 		return liSele.nextInt();
