@@ -102,6 +102,8 @@ public class Main {
 					System.out.println("Badge :");
 					int badge = input.nextInt();
 					Client client = new Client( id, firstname,  lastName,  telephone,  email,  badge);
+					String badgeClient = badge >= 3 ? "cette personne une client fidéle" : "";
+                    System.out.println(badgeClient);
 					client.addPerson(clients, client);
 					System.out.println("Bien ajouté!");
 					break;
@@ -118,12 +120,9 @@ public class Main {
 					email = input.next();
 					System.out.println("Badge :");
 					badge = input.nextInt();
+					Client upClient = new Client( id, firstname,  lastName,  telephone,  email,  badge);
 					
-					
-					if(badge>=3) {
-						System.out.println("ce client est fidéle");
-						
-					}
+					upClient.editPerson(clients, upClient, id);
 					System.out.println("bien modifier!");
 					break;
 				case 3:
