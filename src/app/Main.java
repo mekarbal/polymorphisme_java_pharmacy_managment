@@ -11,87 +11,90 @@ import java.util.Comparator;
 import java.util.List;
 public class Main {
 
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		
-
-	
 		Scanner input = new Scanner(System.in);
+		
 		ArrayList<Medication> medications = new ArrayList<Medication>();
 		ArrayList<Person> clients= new ArrayList<Person>();
 		ArrayList<Person> pharmacists=new ArrayList<Person>();
 		
-		int out = 0;
-		int back = 0;
+	while(true){
+		
 
-		switch (prMenu()) {
-		case 1:
-			do {
-				switch (crudMenu()) {
-
-				case 1:
-					int id = medications.size() + 1;
-					System.out.println("Name :");
-					String name = input.next();
-					System.out.println("Description :");
-					String description = input.next();
-					System.out.println("Price :");
-					String price = input.next();
-					Medication medication =new Medication( id,  name,  description, price);
-					medication.AddMedication(medications, medication);				
-					System.out.println("Medicament  a ete bien ajouté");
-					break;
-				case 2:
-					System.out.println(" tapez l\'id de medicament");
-					id = input.nextInt();
-					System.out.println("Name :");
-					name = input.next();
-					System.out.println("Description:");
-					description = input.next();
-					System.out.println("Price :");
-					price = input.next();
-					Medication upmedication =new Medication( id,  name,  description, price);
-					upmedication.editMedication(medications, upmedication, id-1);
-					System.out.println("la modification a ete bien fait");
-					break;
-				case 3:
-					System.out.println(" tapez l\'id de medicament :");
-					id = input.nextInt();
-					Medication delmedication = new Medication();
-					delmedication.deleteMedication(medications, id-1);
-					System.out.println("Medicament a ete bien supprimé");
-					break;
-				case 4:
-					System.out.println(medications);
-					break;
-				case 5:
-					System.out.println("Search your medicament");
-                    String searchMedication = input.next();
-                  for (int i = 0; i < medications.size(); i++){
-                      if(medications.get(i).getName().contains(searchMedication)){
-                          System.out.println(medications.get(i).toString());
-                      }
-                  }
-                  break;
-				case 6:
-					System.out.println(calcul());
-					break;
-				case 7:
-					prMenu();
-					break;
-				default:
-					System.out.println("Vous avez une erreur !!!!");
-
-				}
-				;
-			} while (back == 0);
-
-			break;
-
-		case 2:
-			do {
-				switch (crudMenu()) {
-
-				case 1:
+		System.out.println("Veuillez choisir un nombre");
+		System.out.println("*****************************\n");
+		System.out.println("1 - La gestion des Medicaments");
+		System.out.println("2 - La gestion des Client");
+		System.out.println("3 - La gestion des Pharmaciens");
+		System.out.println("4 - Quitter");
+	    
+	    int choice = input.nextInt();
+	    
+	    switch(choice){
+	        case 1:
+	   
+	        		int choice1 = crudMenu();
+	        		switch(choice1) {
+	        		case 1 :
+	        			int id = medications.size() + 1;
+						System.out.println("Name :");
+						String name = input.next();
+						System.out.println("Description :");
+						String description = input.next();
+						System.out.println("Price :");
+						String price = input.next();
+						Medication medication =new Medication( id,  name,  description, price);
+						medication.AddMedication(medications, medication);				
+						System.out.println("Medicament  a ete bien ajouté");
+	        			break;
+	        		case 2:
+						System.out.println(" tapez l\'id de medicament");
+						id = input.nextInt();
+						System.out.println("Name :");
+						name = input.next();
+						System.out.println("Description:");
+						description = input.next();
+						System.out.println("Price :");
+						price = input.next();
+						Medication upmedication =new Medication( id,  name,  description, price);
+						upmedication.editMedication(medications, upmedication, id-1);
+						System.out.println("la modification a ete bien fait");
+						break;
+					case 3:
+						System.out.println(" tapez l\'id de medicament :");
+						id = input.nextInt();
+						Medication delmedication = new Medication();
+						delmedication.deleteMedication(medications, id-1);
+						System.out.println("Medicament a ete bien supprimé");
+						break;
+					case 4:
+						System.out.println(medications);
+						break;
+					case 5:
+						System.out.println("Search your medicament");
+	                    String searchMedication = input.next();
+	                  for (int i = 0; i < medications.size(); i++){
+	                      if(medications.get(i).getName().contains(searchMedication)){
+	                          System.out.println(medications.get(i).toString());
+	                      }
+	                  }
+	                  break;
+					case 6:
+						System.out.println(calcul());
+						break;
+	        		case 7 : 
+	        			break;
+	        		default:
+						System.out.println("Vous avez une erreur !!!!");
+	        		}
+	        		break;
+	        	
+	        	
+	        case 2: 
+	        	int choice2 = crudMenu();
+        		switch(choice2) {
+        		case 1:
 					int id = clients.size() + 1;
 					System.out.println("First name:");
 					String firstname = input.next();
@@ -153,22 +156,16 @@ public class Main {
 					
 					System.out.println(calcul());
 					break;
-				case 7:
-					prMenu();
-					break;
-				default:
+        		case 7 : 
+        			break;
+        		default:
 					System.out.println(" Vous avez une erreur !!! ");
-
-				}
-				;
-			} while (back == 0);
-			break;
-
-		case 3:
-			do {
-				switch (crudMenu()) {
-
-				case 1:
+        		}
+        		break;
+	        case 3: 
+	        	int choice3 = crudMenu();
+        		switch(choice3) {
+        		case 1:
 					int id = pharmacists.size() + 1;
 					System.out.println("First name:");
 					String firstname = input.next();
@@ -222,43 +219,22 @@ public class Main {
 					System.out.println(calcul());
 					break;
 				case 7:
-					prMenu();
 					break;
 				default:
 					System.out.println(" Vous avez une erreur");
 
-				}
-				;
-			} while (back == 0);
-			break;
-		case 4:
-			System.exit(out);
-
-			break;
-
-		default:
-			System.out.println(" Vous avez une erreur");
-
-		}
-		while (out == 0)
-			;
-		
-	}
-	
-	public static int prMenu() {
-
-		//int listSelec;
-		Scanner liSele = new Scanner(System.in);
-
-		System.out.println("Veuillez choisir un nombre");
-		System.out.println("*****************************\n");
-		System.out.println("1 - La gestion des Medicaments");
-		System.out.println("2 - La gestion des Client");
-		System.out.println("3 - La gestion des Pharmaciens");
-		System.out.println("4 - Quitter");
-
-		//listSelec = liSele.nextInt();
-		return liSele.nextInt();
+        		
+        		}
+	        	break;
+	        case 4: 
+	        
+	        	break;
+	        default:
+				System.out.println(" Vous avez une erreur");
+	     
+	       
+	    }
+	    }
 
 	}
 	
