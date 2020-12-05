@@ -73,8 +73,10 @@ public class Main {
                   }
                   break;
 				case 6:
+					System.out.println(calcul());
+					break;
+				case 7:
 					prMenu();
-
 					break;
 				default:
 					System.out.println("Vous avez une erreur !!!!");
@@ -148,8 +150,11 @@ public class Main {
                   }
                   break;
 				case 6:
+					
+					System.out.println(calcul());
+					break;
+				case 7:
 					prMenu();
-
 					break;
 				default:
 					System.out.println(" Vous avez une erreur !!! ");
@@ -214,8 +219,10 @@ public class Main {
                   }
                   break;
 				case 6:
+					System.out.println(calcul());
+					break;
+				case 7:
 					prMenu();
-
 					break;
 				default:
 					System.out.println(" Vous avez une erreur");
@@ -267,11 +274,26 @@ public class Main {
 		System.out.println("3 - Supprimer");
 		System.out.println("4 - Afficher");
 		System.out.println("5 - Search");
-		System.out.println("6 - Retour");
+		System.out.println("6 - Calculer chiffre d\'affire");
+		System.out.println("7 - Retour");
 
 		//listSelec = liSele.nextInt();
 		return liSele.nextInt();
 
+	}
+	
+	
+	public static int calcul() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Price :");
+		String price = input.next();
+		System.out.println("Qty :");
+		int Qty = input.nextInt();
+		
+		int sum = Integer.parseInt(price)*Qty;
+	
+		return sum;
+		
 	}
 	
 	public static Comparator<Person> NameComparator = new Comparator<Person>() {
