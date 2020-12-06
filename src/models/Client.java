@@ -29,9 +29,9 @@ public class Client extends Person {
 	
 	@Override
 	public String toString() {
-		return "Client [badge=" + badge + ", Id=" + getId() + ", Firstname=" + getFirstname()
-				+ ", LastName=" + getLastName() + ", Telephone=" + getTelephone() + ", Email="
-				+ getEmail()+ "]";
+		return "Client \n, Id=" + getId() + ", Prénom=" + getFirstname()
+				+ ", Nom=" + getLastName() + ", Téléphone=" + getTelephone() + ", Email="
+				+ getEmail()+ " Badge=" + badge + "\n";
 	}
 
 	public String addPerson(ArrayList<Person> listPerson, Client client) {

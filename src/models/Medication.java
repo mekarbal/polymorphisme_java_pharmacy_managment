@@ -46,7 +46,7 @@ public class Medication {
 
 	@Override
 	public String toString() {
-		return "Medication [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+		return "Medicament [id=" + id + ", Nom=" + name + ", Description=" + description + ", Prix=" + price + "]\n";
 	}
 	
 	

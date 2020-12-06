@@ -25,7 +25,7 @@ public static void main(String[] args) {
 		System.out.println("Veuillez choisir un nombre");
 		System.out.println("*****************************\n");
 		System.out.println("1 - La gestion des Medicaments");
-		System.out.println("2 - La gestion des Client");
+		System.out.println("2 - La gestion des Clients");
 		System.out.println("3 - La gestion des Pharmaciens");
 		System.out.println("4 - Quitter");
 	    
@@ -38,41 +38,41 @@ public static void main(String[] args) {
 	        		switch(choice1) {
 	        		case 1 :
 	        			int id = medications.size() + 1;
-						System.out.println("Name :");
+						System.out.println("Nom de medicament :");
 						String name = input.next();
 						System.out.println("Description :");
 						String description = input.next();
-						System.out.println("Price :");
+						System.out.println("Prix (DH) :");
 						String price = input.next();
 						Medication medication =new Medication( id,  name,  description, price);
 						medication.AddMedication(medications, medication);				
-						System.out.println("Medicament  a ete bien ajouté");
+						System.out.println("Medicament  a été bien ajouté");
 	        			break;
 	        		case 2:
-						System.out.println(" tapez l\'id de medicament");
+						System.out.println(" Tapez l\'id de medicament");
 						id = input.nextInt();
-						System.out.println("Name :");
+						System.out.println("Nom de medicament :");
 						name = input.next();
 						System.out.println("Description:");
 						description = input.next();
-						System.out.println("Price :");
+						System.out.println("Prix (DH) :");
 						price = input.next();
 						Medication upmedication =new Medication( id,  name,  description, price);
 						upmedication.editMedication(medications, upmedication, id-1);
-						System.out.println("la modification a ete bien fait");
+						System.out.println("la modification a été bien effectuée");
 						break;
 					case 3:
-						System.out.println(" tapez l\'id de medicament :");
+						System.out.println(" Tapez l\'id de medicament :");
 						id = input.nextInt();
 						Medication delmedication = new Medication();
 						delmedication.deleteMedication(medications, id-1);
-						System.out.println("Medicament a ete bien supprimé");
+						System.out.println("Medicament a été bien supprimé");
 						break;
 					case 4:
 						System.out.println(medications);
 						break;
 					case 5:
-						System.out.println("Search your medicament");
+						System.out.println("Chercher un medicament par son nom :");
 	                    String searchMedication = input.next();
 	                  for (int i = 0; i < medications.size(); i++){
 	                      if(medications.get(i).getName().contains(searchMedication)){
@@ -96,46 +96,46 @@ public static void main(String[] args) {
         		switch(choice2) {
         		case 1:
 					int id = clients.size() + 1;
-					System.out.println("First name:");
+					System.out.println("Prénom :");
 					String firstname = input.next();
-					System.out.println("Last name :");
+					System.out.println("Nom :");
 					String lastName = input.next();
-					System.out.println("Phone :");
+					System.out.println("Numéro de téléphne :");
 					String telephone = input.next();
-					System.out.println("email :");
+					System.out.println("Email :");
 					String email = input.next();
-					System.out.println("Badge :");
+					System.out.println("Badge (nombre d'achat):");
 					int badge = input.nextInt();
 					Client client = new Client( id, firstname,  lastName,  telephone,  email,  badge);
-					String badgeClient = badge >= 3 ? "cette personne une client fidéle" : "";
+					String badgeClient = badge >= 3 ? "Cette personne est un client fidéle" : "";
                     System.out.println(badgeClient);
 					client.addPerson(clients, client);
 					System.out.println("Bien ajouté!");
 					break;
 				case 2:
-					System.out.println(" Entrer un id  : ");
+					System.out.println(" Entrez un id  : ");
 					id = input.nextInt();
-					System.out.println("First name:");
+					System.out.println("Prénom :");
 					firstname = input.next();
-					System.out.println("Last name :");
+					System.out.println("Nom :");
 					lastName = input.next();
-					System.out.println("Phone :");
+					System.out.println("Numéro de téléphne :");
 					telephone = input.next();
-					System.out.println("email :");
+					System.out.println("Email :");
 					email = input.next();
-					System.out.println("Badge :");
+					System.out.println("Badge (nombre d'achat):");
 					badge = input.nextInt();
 					Client upClient = new Client( id, firstname,  lastName,  telephone,  email,  badge);
 					
 					upClient.editPerson(clients, upClient, id);
-					System.out.println("bien modifier!");
+					System.out.println("bien modifié!");
 					break;
 				case 3:
 					System.out.println("  Saisir un id  : ");
 					id = input.nextInt();
 					Client delClient = new Client();
 					delClient.deletePerson(clients, id-1);
-					System.out.println("Client deleted");
+					System.out.println("Client supprimé");
 					break;
 				case 4:
 					Collections.sort(clients, NameComparator );
@@ -144,7 +144,7 @@ public static void main(String[] args) {
 
 					break;
 				case 5:
-					System.out.println("Search your Client");
+					System.out.println("Chercher un client");
                     String searchClient = input.next();
                   for (int i = 0; i < clients.size(); i++){
                       if(clients.get(i).getFirstname().contains(searchClient)){
@@ -167,47 +167,47 @@ public static void main(String[] args) {
         		switch(choice3) {
         		case 1:
 					int id = pharmacists.size() + 1;
-					System.out.println("First name:");
+					System.out.println("Prénom :");
 					String firstname = input.next();
-					System.out.println("Last name :");
+					System.out.println("Nom :");
 					String lastName = input.next();
-					System.out.println("Phone :");
+					System.out.println("Numéro de téléphone :");
 					String telephone = input.next();
-					System.out.println("email :");
+					System.out.println("Email :");
 					String email = input.next();					
 					Pharmacist pharmacist = new Pharmacist(id, firstname,  lastName,  telephone,  email);
 					pharmacist.addPerson(pharmacists, pharmacist);
-					System.out.println("pharmacist added");
+					System.out.println("Pharmacien ajoutée avec succes");
 					
 					break;
 				case 2:
-					System.out.println(" Entrer un id  : ");
+					System.out.println(" Entrez un id  : ");
 					id = input.nextInt();
-					System.out.println("First name:");
+					System.out.println("Prénom :");
 					firstname = input.next();
-					System.out.println("Last name :");
+					System.out.println("Nom :");
 					lastName = input.next();
-					System.out.println("Phone :");
+					System.out.println("Numéro de téléphone :");
 					telephone = input.next();
-					System.out.println("email :");
+					System.out.println("Email :");
 					email = input.next();
 					Pharmacist upPharmacist = new Pharmacist(id, firstname,  lastName,  telephone,  email  );
 					upPharmacist.editPerson(pharmacists, upPharmacist, id-1);
-					System.out.println("pharmacist updated");
+					System.out.println("Pharmacien modifié avec succes");
 					break;
 				case 3:
 					System.out.println(" Entrer un id  : ");
 					id = input.nextInt();
 					Pharmacist delPharmacist= new Pharmacist();
 					delPharmacist.deletePerson(pharmacists, id-1);
-					System.out.println(" pharmacist deleted");
+					System.out.println("Pharmacien supprimé");
 					break;
 				case 4:
 					System.out.println(pharmacists+"\n");
 
 					break;
 				case 5:
-					System.out.println("Search your Pharmacist");
+					System.out.println("Charcher un pharmacien");
                     String searchPharmacist = input.next();
                   for (int i = 0; i < pharmacists.size(); i++){
                       if(pharmacists.get(i).getFirstname().contains(searchPharmacist)){
@@ -246,11 +246,11 @@ public static void main(String[] args) {
 		System.out.println("Veuillez choisir un nombre");
 		System.out.println("*****************************\n");
 		System.out.println("1 - Ajouter");
-		System.out.println("2 - Mise à jour");
+		System.out.println("2 - Modifier");
 		System.out.println("3 - Supprimer");
 		System.out.println("4 - Afficher");
-		System.out.println("5 - Search");
-		System.out.println("6 - Calculer chiffre d\'affire");
+		System.out.println("5 - Chercher");
+		System.out.println("6 - Calculer le chiffre d\'affire");
 		System.out.println("7 - Retour");
 
 		//listSelec = liSele.nextInt();
@@ -261,9 +261,9 @@ public static void main(String[] args) {
 	
 	public static int calcul() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Price :");
+		System.out.println("Prix :");
 		String price = input.next();
-		System.out.println("Qty :");
+		System.out.println("Quantité :");
 		int Qty = input.nextInt();
 		
 		int sum = Integer.parseInt(price)*Qty;
