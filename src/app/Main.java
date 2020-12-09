@@ -1,15 +1,26 @@
 package app;
 
 import java.util.ArrayList;
+
 import java.util.Scanner;
+
 import models.Client;
 import models.Medication;
 import models.Person;
 import models.Pharmacist;
+import traitements.Traitement;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+
+
+
+
 public class Main {
+	
+	
 
 public static void main(String[] args) {
 		
@@ -18,6 +29,8 @@ public static void main(String[] args) {
 		ArrayList<Medication> medications = new ArrayList<Medication>();
 		ArrayList<Person> clients= new ArrayList<Person>();
 		ArrayList<Person> pharmacists=new ArrayList<Person>();
+		
+		Traitement tr= new Traitement();
 		
 	while(true){
 		
@@ -34,7 +47,7 @@ public static void main(String[] args) {
 	    switch(choice){
 	        case 1:
 	   
-	        		int choice1 = crudMenu();
+	        		int choice1 = tr.crudMenu() ;
 	        		switch(choice1) {
 	        		case 1 :
 	        			int id = medications.size() + 1;
@@ -81,7 +94,7 @@ public static void main(String[] args) {
 	                  }
 	                  break;
 					case 6:
-						System.out.println(calcul());
+						System.out.println(choice1);
 						break;
 	        		case 7 : 
 	        			break;
@@ -92,7 +105,7 @@ public static void main(String[] args) {
 	        	
 	        	
 	        case 2: 
-	        	int choice2 = crudMenu();
+	        	int choice2 = tr.crudMenu();
         		switch(choice2) {
         		case 1:
 					int id = clients.size() + 1;
@@ -110,7 +123,7 @@ public static void main(String[] args) {
 					String badgeClient = badge >= 3 ? "Cette personne est un client fidéle" : "";
                     System.out.println(badgeClient);
 					client.addPerson(clients, client);
-					System.out.println("Bien ajouté!");
+					System.out.println("Client a ete bien ajouter");
 					break;
 				case 2:
 					System.out.println(" Entrez un id  : ");
@@ -138,7 +151,7 @@ public static void main(String[] args) {
 					System.out.println("Client supprimé");
 					break;
 				case 4:
-					Collections.sort(clients, NameComparator );
+					Collections.sort(clients, tr.NameComparator );
 					System.out.println(clients);
 					
 
@@ -154,7 +167,7 @@ public static void main(String[] args) {
                   break;
 				case 6:
 					
-					System.out.println(calcul());
+					System.out.println(choice2);
 					break;
         		case 7 : 
         			break;
@@ -163,7 +176,7 @@ public static void main(String[] args) {
         		}
         		break;
 	        case 3: 
-	        	int choice3 = crudMenu();
+	        	int choice3 = tr.crudMenu();
         		switch(choice3) {
         		case 1:
 					int id = pharmacists.size() + 1;
@@ -216,7 +229,7 @@ public static void main(String[] args) {
                   }
                   break;
 				case 6:
-					System.out.println(calcul());
+					System.out.println(tr.calcul());
 					break;
 				case 7:
 					break;
@@ -238,51 +251,5 @@ public static void main(String[] args) {
 
 	}
 	
-	public static int crudMenu() {
-
-		//int listSelec;
-		Scanner liSele = new Scanner(System.in);
-
-		System.out.println("Veuillez choisir un nombre");
-		System.out.println("*****************************\n");
-		System.out.println("1 - Ajouter");
-		System.out.println("2 - Modifier");
-		System.out.println("3 - Supprimer");
-		System.out.println("4 - Afficher");
-		System.out.println("5 - Chercher");
-		System.out.println("6 - Calculer le chiffre d\'affire");
-		System.out.println("7 - Retour");
-
-		//listSelec = liSele.nextInt();
-		return liSele.nextInt();
-
-	}
 	
-	
-	public static int calcul() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Prix :");
-		String price = input.next();
-		System.out.println("Quantité :");
-		int Qty = input.nextInt();
-		
-		int sum = Integer.parseInt(price)*Qty;
-	
-		return sum;
-		
-	}
-	
-	public static Comparator<Person> NameComparator = new Comparator<Person>() {
-
-        public int compare(Person c1, Person c2) {
-           String clientName = c1.getFirstname();
-           String clientLName = c2.getLastName();
-
-           //ascending order
-           return clientName.compareTo(clientLName);
-
-        }
-
-	
-	};
 }
